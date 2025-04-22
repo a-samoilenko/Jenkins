@@ -1,0 +1,20 @@
+{
+  "symbol": "MNDE-USDT",
+  "symbolName": "MNDE-USDT",
+  "buy": "0.097",
+  "bestBidSize": "1082.1541",
+  "sell": "0.09705",
+  "bestAskSize": "245.4017",
+  "changeRate": "-0.0256",
+  "changePrice": "-0.00255",
+  "high": "0.10698",
+  "low": "0.09558",
+  "vol": "966985.1474",
+  "volValue": "96836.395947885",
+  "last": "0.09681",
+  "averagePrice": "0.0980273",
+  "takerFeeRate": "0.001",
+  "makerFeeRate": "0.001",
+  "takerCoefficient": "3",
+  "makerCoefficient": "3"
+}
