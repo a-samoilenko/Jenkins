@@ -12,11 +12,12 @@ import java.util.Comparator;
 import java.util.List;
 import static io.restassured.RestAssured.given;
 
-@Tag("KucoinTests")
+//@Tag("KucoinTests")
 public class KucoinTests extends BaseApiTest {
     SoftAssertions softAssertions = new SoftAssertions();
 
     @Test
+    @Tag("KucoinTests")
     public void anyTest(){
         List<KucoinDTO> kukoinList = given()
                 .contentType(ContentType.JSON)
@@ -37,6 +38,7 @@ public class KucoinTests extends BaseApiTest {
         softAssertions.assertAll();
     }
     @Test
+    @Tag("KucoinTests")
     public void jsonPathWithoutRestAssuredTest(){
         File json = new File("src/test/resources/schemas/forJsonpathTesting.json");
         JsonPath jsp = new JsonPath(json);
@@ -45,6 +47,7 @@ public class KucoinTests extends BaseApiTest {
         softAssertions.assertAll();
 }
     @Test
+    @Tag("Ne_KucoinTests")
     public void oneObjJsonPathWithoutRestAssuredTest (){
         try{
         File json = new File("src/test/resources/schemas/forOneObjJsonpathTesting.json");
