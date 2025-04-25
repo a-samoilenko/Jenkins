@@ -26,23 +26,6 @@ node {
                 generateAllure()
             }
         }
-
-//        try {
-//            stage("Run tests") {
-//                parallel(
-//                        'Api Tests': {
-//                            runTestWithTag("apiTests")
-//                        },
-//                        'Ui Tests': {
-//                            runTestWithTag("uiTests")
-//                        }
-//                )
-//            }
-//        } finally {
-//            stage("Allure") {
-//                generateAllure()
-//            }
-//        }
     }
 }
 
@@ -67,9 +50,11 @@ def runTestWithTag(String tag) {
 }
 
 def getProject(String repo, String branch) {
-    cleanWs()
+//    cleanWs()
     checkout scm: [
-            $class           : 'GitSCM', branches: [[name: branch]],
+            $class           : 'GitSCM',
+            branches: [[name: branch]],
+            extensions: [[$class: 'CleanBeforeCheckout']],
             userRemoteConfigs: [[
                                         url: repo
                                 ]]
