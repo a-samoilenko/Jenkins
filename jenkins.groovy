@@ -1,7 +1,7 @@
-def task_branch = "${TEST_BRANCH_NAME}"
+task_branch = "${TEST_BRANCH_NAME}"
 def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] : task_branch.trim()
 currentBuild.displayName = "$branch_cutted"
-def base_git_url = "https://github.com/a-samoilenko/Jenkins.git"
+base_git_url = "https://github.com/a-samoilenko/Jenkins.git"
 
 
 node {
@@ -26,6 +26,23 @@ node {
                 generateAllure()
             }
         }
+
+//        try {
+//            stage("Run tests") {
+//                parallel(
+//                        'Api Tests': {
+//                            runTestWithTag("apiTests")
+//                        },
+//                        'Ui Tests': {
+//                            runTestWithTag("uiTests")
+//                        }
+//                )
+//            }
+//        } finally {
+//            stage("Allure") {
+//                generateAllure()
+//            }
+//        }
     }
 }
 
@@ -50,11 +67,9 @@ def runTestWithTag(String tag) {
 }
 
 def getProject(String repo, String branch) {
-//    cleanWs()
+    cleanWs()
     checkout scm: [
-            $class           : 'GitSCM',
-            branches: [[name: branch]],
-            extensions: [[$class: 'CleanBeforeCheckout']],
+            $class           : 'GitSCM', branches: [[name: branch]],
             userRemoteConfigs: [[
                                         url: repo
                                 ]]
@@ -70,6 +85,3 @@ def generateAllure() {
             results          : [[path: 'build/allure-results']]
     ])
 }
-
-
-
