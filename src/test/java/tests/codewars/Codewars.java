@@ -2,26 +2,21 @@ package tests.codewars;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 
 public class Codewars {
 
-    public static int findEvenIndex(int[] arr) {
-        for(int i:arr){
-
-        }
-        return -1;
+    public static String reverseWords(final String original) {
+        return Arrays.stream(original.split(" ")).map(e->new StringBuilder(e).reverse().toString()).collect(Collectors.joining(" "));
     }
 
     @Test
-    void basicTest() {
-        Assertions.assertThat(findEvenIndex(new int[] {1,2,3,4,3,2,1})).isEqualTo(3);
+    public void basicTest() {
+    Assertions.assertThat(reverseWords("  double  spaced  words  ")).isEqualTo("  elbuod  decaps  sdrow  ");
     }
 }
