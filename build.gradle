@@ -44,12 +44,17 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform{}
-
-//    tasks.test {
-//        useJUnitPlatform {
-//            includeTags("KucoinTests")  // запускать только тесты с тегом
-//            // excludeTags("slow")  // исключать тесты с тегом "slow"
-//        }
-//    }
+    useJUnitPlatform()
 }
+
+    task KucoinTests(type: Test) {
+        useJUnitPlatform {
+            includeTags 'KucoinTests'
+        }
+    }
+
+    task Ne_KucoinTests(type: Test) {
+        useJUnitPlatform {
+            includeTags 'Ne_KucoinTests'
+        }
+    }
