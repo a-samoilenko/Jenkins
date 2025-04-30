@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import static io.restassured.RestAssured.given;
 
-//@Tag("KucoinTests")
+
 public class KucoinTests extends BaseApiTest {
     SoftAssertions softAssertions = new SoftAssertions();
 
@@ -22,7 +22,7 @@ public class KucoinTests extends BaseApiTest {
         List<KucoinDTO> kukoinList = given()
                 .contentType(ContentType.JSON)
                 .when()
-                .get("https://api.kucoin.com/api/v1/market/allTickers")
+                .get(BASE_URL)
                 .then()
                 .extract().jsonPath().getList("data.ticker",KucoinDTO.class);
 
@@ -37,8 +37,9 @@ public class KucoinTests extends BaseApiTest {
         softAssertions.assertThat(sortedLowToHignList).startsWith(sortedHighToLowList.get(99));
         softAssertions.assertAll();
     }
+
     @Test
-    @Tag("KucoinTests")
+    @Tag("Ne_KucoinTests")
     public void jsonPathWithoutRestAssuredTest(){
         File json = new File("src/test/resources/schemas/forJsonpathTesting.json");
         JsonPath jsp = new JsonPath(json);

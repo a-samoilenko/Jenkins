@@ -11,10 +11,12 @@ import java.util.concurrent.TimeUnit;
 @Timeout(value = 20, unit = TimeUnit.SECONDS)
 public class BaseApiTest {
 
-    static final String BASE_URL = "https://jsonplaceholder.typicode.com";
+    public static String BASE_URL;
+
 
     @BeforeAll
     public static void setUp() {
+        BASE_URL = System.getProperty("BASE_URL", "https://api.kucoin.com/api/v1/market/allTickers");
         RestAssured.baseURI = BASE_URL;
         RestAssured.filters(
                 new RequestLoggingFilter(),
